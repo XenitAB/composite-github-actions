@@ -1,2 +1,2 @@
-# composite-github-actions
-Reusable composite Github Actions
+# github-actions-templates
+Reusable Github composite actions and workflows
