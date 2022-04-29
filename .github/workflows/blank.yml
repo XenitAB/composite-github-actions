@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - uses: ./
+        if: github.event_name != 'pull_request'
+        with:
+          tag: v4.5.4
+          checksum: 1159c5c17c964257123b10e7d8864e9fe7f9a580d4124a388e746e4003added3
+          options: "--load-restrictor=LoadRestrictionsNone --reorder=legacy"
+
+      - uses: XenitAB/github-actions-templates@${GITHUB_HEAD_REF}
+        if: github.event_name == 'pull_request'
+        with:
+          tag: v4.5.4
+          checksum: 1159c5c17c964257123b10e7d8864e9fe7f9a580d4124a388e746e4003added3
+          options: "--load-restrictor=LoadRestrictionsNone --reorder=legacy"
