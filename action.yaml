@@ -1,0 +1,25 @@
+name: Kustomize Validation
+author: https://github.com/XenitAB
+description: Validate Kustomize yaml files by `kustomize build` command.
+inputs:
+  tag:
+    description: Kustomize release tag
+    required: true
+  checksum:
+    description: Expected Kustomize download checksum
+    required: true
+  options:
+    description: Kustomize build options
+    required: false
+    default: ""
+runs:
+  using: "composite"
+  steps:
+    - id: kustomize-install
+      shell: bash
+      run: |
+        ${{ github.action_path }}/src/kustomize-install.sh ${{ inputs.tag }} ${{ inputs.checksum }}
+    - id: kustomize-build
+      shell: bash
+      run: |
+        ${{ github.action_path }}/src/kustomize-build.sh "${{ inputs.options }}"
