@@ -9,18 +9,14 @@ to make sure that the kustomization manifests are syntactically correct before m
 
 ## Parameters
 
-- `version` - kustomize version to use (mandatory)
-- `checksum` - the expected kustomize checksum (mandatory)
+- `version` - kustomize version to use (required)
+- `checksum` - the expected kustomize checksum (required)
 - `options` - kustomize options (optional)
 
 Kustomize versions and the corresponding download checksum for `kustomize_<version>_linux_amd64.tar.gz`
 can be found here: <https://github.com/kubernetes-sigs/kustomize/releases>. The action is downloading
 kustomize and compares the checksum of the downloaded file with the configured `checksum` and fails
 if they are not equal.
-
-## Success criterion
-
-An exit code of `0` is considered a successful execution.
 
 ## Usage example
 
