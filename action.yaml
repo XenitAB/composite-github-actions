@@ -13,7 +13,7 @@ inputs:
     required: false
     default: ""
 runs:
-  using: "composite"
+  using: composite
   steps:
     - id: kustomize-install
       shell: bash
