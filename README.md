@@ -37,7 +37,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: XenitAB/kustomize-build-action@2022.05.1
+      - uses: XenitAB/kustomize-build-action@v0.1.0
         with:
           tag: v4.5.4
           checksum: 1159c5c17c964257123b10e7d8864e9fe7f9a580d4124a388e746e4003added3
